@@ -17,6 +17,9 @@ Use these values as the default local integration targets for this workspace unl
 - owner: `cdsj5-Programming`
 - repository: `innovation-challenge-2026`
 - repo slug: `cdsj5-Programming/innovation-challenge-2026`
+- GitHub repository URL: `https://github.com/cdsj5-Programming/innovation-challenge-2026`
+- GitHub Pages site URL: `https://cdsj5-programming.github.io/innovation-challenge-2026/`
+- student guidance site URL: `https://cdsj5-programming.github.io/innovation-challenge-2026/student_guidance_site/`
 
 ## Secret handling
 

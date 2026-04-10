@@ -39,6 +39,16 @@ When the task involves the deployed submission flow, Google Drive, Google Sheet,
 
 Treat those IDs, URLs, sheet names, and repo coordinates as the default local integration targets unless the user gives newer values.
 
+## Local folder grading mode
+
+When the user wants to grade student works from the local `學生作品/` folder and export results to CSV:
+
+- load `references/local-folder-grading.md`
+- treat `學生作品/README.md` as the source-of-truth folder convention
+- use `references/ai_grading_output_template.csv` as the default CSV column order
+
+Prefer Markdown instructions and CSV templates over plain `.txt` notes so future Codex runs can reuse a stable structure.
+
 ## Official rubric
 
 Use the official 100-point rubric in `references/rubric.md` unless the user explicitly asks for another one.
@@ -191,3 +201,5 @@ Use this shape when the user wants plain-language coaching:
 - prompt templates: `references/prompt-template.md`
 - status handoff: `references/status-log-2026-04-10.md`
 - local service config: `references/local-service-config.md`
+- local folder grading: `references/local-folder-grading.md`
+- CSV template: `references/ai_grading_output_template.csv`

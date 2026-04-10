@@ -89,3 +89,20 @@
 - `TEXT_LIMITS`
 - `EVENT_TITLE`
 - `EVENT_SCHEDULE_LABEL`
+
+## 九、範本檔案
+
+`templates/` 內的範本已對齊「第一屆聖五中學生創意設計挑戰賽」的最新提交內容。
+
+現有範本：
+
+- `templates/innovation_submission_template.md`
+- `templates/innovation_submission_template_revised.docx`
+- `output/pdf/innovation_submission_template_revised.pdf`
+
+這些範本可用於：
+
+- 告訴學生作品介紹應該寫甚麼
+- 對齊提交網站的文字欄位
+- 協助老師提供一致格式
+- 方便後續 AI 讀取與評改
