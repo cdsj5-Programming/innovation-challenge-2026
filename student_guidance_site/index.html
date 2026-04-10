@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一屆聖五中學生創意設計挑戰賽</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: #f5efe2;
+        --paper: rgba(255, 252, 246, 0.92);
+        --paper-strong: #fffcf4;
+        --ink: #1a2718;
+        --muted: #4d6149;
+        --line: rgba(57, 82, 56, 0.14);
+        --line-strong: rgba(47, 111, 79, 0.28);
+        --brand: #2a6645;
+        --brand-light: #3a8a5c;
+        --brand-2: #b05228;
+        --accent: #dfe9d7;
+        --shadow: 0 4px 24px rgba(30, 50, 28, 0.10), 0 1px 4px rgba(30, 50, 28, 0.06);
+        --shadow-card: 0 2px 12px rgba(30, 50, 28, 0.08);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: "Noto Sans TC", "PingFang TC", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(233, 198, 151, 0.28), transparent 30%),
+          radial-gradient(circle at 90% 10%, rgba(114, 155, 113, 0.18), transparent 24%),
+          linear-gradient(180deg, #f8f2e6 0%, #f2e9d8 50%, #ede3cc 100%);
+        min-height: 100vh;
+      }
+
+      .page {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 18px 96px;
+      }
+
+      /* ── Hero ── */
+      .hero {
+        background: var(--paper);
+        border: 1px solid var(--line-strong);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+        padding: 36px 38px;
+        margin-bottom: 22px;
+        backdrop-filter: blur(16px);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: rgba(42, 102, 69, 0.1);
+        border: 1px solid rgba(42, 102, 69, 0.2);
+        color: var(--brand);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(28px, 5.5vw, 58px);
+        line-height: 1.1;
+        font-weight: 900;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+      }
+
+      .hero > p {
+        max-width: 680px;
+        color: var(--muted);
+        line-height: 1.75;
+        font-size: 15px;
+        margin: 0 0 24px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 0 0 24px;
+      }
+
+      .quick {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .quick-item {
+        background: var(--paper-strong);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 16px 18px;
+      }
+
+      .quick-item strong {
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--brand);
+        margin-bottom: 6px;
+      }
+
+      .quick-item span {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      /* ── Layout ── */
+      .grid {
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 18px;
+        align-items: start;
+      }
+
+      .card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: var(--shadow-card);
+        padding: 28px;
+        margin-bottom: 16px;
+        backdrop-filter: blur(12px);
+      }
+
+      .card:last-child { margin-bottom: 0; }
+
+      h2 {
+        margin: 0 0 16px;
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--ink);
+      }
+
+      h3 {
+        margin: 20px 0 8px;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--brand);
+      }
+
+      p { line-height: 1.75; margin: 0 0 10px; }
+      p:last-child { margin-bottom: 0; }
+
+      ul {
+        margin: 6px 0 0;
+        padding-left: 20px;
+      }
+
+      li { line-height: 1.75; color: var(--muted); margin-bottom: 4px; }
+
+      /* ── Table ── */
+      .table-wrap {
+        overflow-x: auto;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        margin-top: 14px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--paper-strong);
+      }
+
+      th, td {
+        border-bottom: 1px solid var(--line);
+        padding: 11px 14px;
+        text-align: left;
+        vertical-align: top;
+        font-size: 14px;
+      }
+
+      th {
+        background: rgba(42, 102, 69, 0.07);
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--brand);
+      }
+
+      tr:last-child td { border-bottom: 0; }
+
+      td strong { color: var(--ink); }
+
+      /* ── Example ── */
+      .example {
+        border-left: 4px solid var(--brand-2);
+        border-radius: 0 12px 12px 0;
+        background: rgba(176, 82, 40, 0.04);
+        padding: 16px 18px;
+        margin-top: 14px;
+      }
+
+      .example p {
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      .example p:last-child { margin-bottom: 0; }
+      .example strong { color: var(--ink); }
+      .example .title-label {
+        display: inline-block;
+        background: rgba(176, 82, 40, 0.1);
+        color: var(--brand-2);
+        font-size: 12px;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 999px;
+        margin-bottom: 12px;
+        letter-spacing: 0.08em;
+      }
+
+      /* ── Sidebar cards ── */
+      .mini-stack { display: grid; gap: 16px; }
+
+      .sidebar-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        box-shadow: var(--shadow-card);
+        padding: 24px;
+        backdrop-filter: blur(12px);
+      }
+
+      .sidebar-card h2 { font-size: 17px; margin-bottom: 14px; }
+
+      /* checklist */
+      .checklist {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .checklist li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 14px;
+        color: var(--muted);
+        padding: 7px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .checklist li:last-child { border-bottom: 0; padding-bottom: 0; }
+
+      .checklist li::before {
+        content: "□";
+        flex-shrink: 0;
+        color: var(--brand);
+        font-size: 16px;
+        line-height: 1.3;
+      }
+
+      /* score */
+      .score-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 8px;
+      }
+
+      .score-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .score-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--brand-light);
+        flex-shrink: 0;
+      }
+
+      /* downloads */
+      .btn-row {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 4px;
+      }
+
+      .btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 16px;
+        border-radius: 14px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+        background: linear-gradient(135deg, var(--brand), var(--brand-light));
+        transition: opacity .15s;
+      }
+
+      .btn:hover { opacity: .88; }
+      .btn.alt { background: linear-gradient(135deg, var(--brand-2), #c97b38); }
+
+      /* ── Steps ── */
+      .steps { display: grid; gap: 0; }
+
+      .step {
+        display: flex;
+        gap: 16px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .step:last-child { border-bottom: 0; padding-bottom: 0; }
+
+      .step-num {
+        width: 32px;
+        height: 32px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--brand), var(--brand-light));
+        color: #fff;
+        font-weight: 800;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .step-body strong {
+        display: block;
+        font-size: 15px;
+        margin-bottom: 4px;
+      }
+
+      .step-body p { font-size: 14px; color: var(--muted); margin: 0; }
+
+      /* ── Info banner ── */
+      .info-banner {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        background: rgba(42, 102, 69, 0.07);
+        border: 1px solid rgba(42, 102, 69, 0.18);
+        border-radius: 16px;
+        padding: 14px 18px;
+        margin-top: 16px;
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .info-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+      /* ── Responsive ── */
+      @media (max-width: 840px) {
+        .grid { grid-template-columns: 1fr; }
+        .quick { grid-template-columns: repeat(2, 1fr); }
+        .hero { padding: 24px 22px; }
+        .card { padding: 22px; }
+      }
+
+      @media (max-width: 480px) {
+        .quick { grid-template-columns: 1fr 1fr; }
+        h1 { font-size: 28px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+
+      <!-- ── Hero ── -->
+      <section class="hero">
+        <span class="eyebrow">Student Guide · 學生說明</span>
+        <h1>第一屆聖五中<br>學生創意設計挑戰賽</h1>
+        <p>從校園、生活或社會找出一個真實問題，提出創新解決方案，並用清楚的文字和一份科學海報說明你們的想法。先看懂規則，再按格式填寫，最後線上提交即可。</p>
+        <div class="hero-actions">
+          <a class="btn" href="https://script.google.com/macros/s/AKfycbzjQu0LWyLXZwvs9EXaeIU8CxB0x2G6RHVkqYFkib0Oe4A0_oxm5qgnODTVATg71QEN/exec" target="_blank" rel="noopener noreferrer">提交作品</a>
+        </div>
+        <div class="quick">
+          <div class="quick-item">
+            <strong>比賽時間</strong>
+            <span>2026 年 4 月 18 日<br>10:00 – 11:30</span>
+          </div>
+          <div class="quick-item">
+            <strong>組隊方式</strong>
+            <span>同班 2 至 3 人<br>1 人代表提交</span>
+          </div>
+          <div class="quick-item">
+            <strong>必交內容</strong>
+            <span>文字欄位<br>+ 科學海報 JPG × 1</span>
+          </div>
+          <div class="quick-item">
+            <strong>提交語言</strong>
+            <span>中文或英文<br>均可</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Main grid ── -->
+      <div class="grid">
+
+        <!-- ── Left column ── -->
+        <div>
+
+          <!-- 必交欄位 -->
+          <section class="card">
+            <h2>必交欄位說明</h2>
+            <p style="color:var(--muted); font-size:14px;">以下五個欄位全部必填，字數限制為參考上限，重點是寫清楚、寫準確。</p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>欄位</th>
+                    <th>字數上限</th>
+                    <th>寫甚麼</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>問題說明</strong></td>
+                    <td>200 字</td>
+                    <td>說清楚觀察到甚麼問題、影響誰、為何重要</td>
+                  </tr>
+                  <tr>
+                    <td><strong>設計理念</strong></td>
+                    <td>500 字</td>
+                    <td>說明為何想到這個方案、設計原則與核心想法</td>
+                  </tr>
+                  <tr>
+                    <td><strong>解決方案細節</strong></td>
+                    <td>1000 字</td>
+                    <td>說明作品如何運作、使用流程、可行性</td>
+                  </tr>
+                  <tr>
+                    <td><strong>人工智能使用情況</strong></td>
+                    <td>500 字</td>
+                    <td>如實說明有否使用 AI，用了哪個平台、做甚麼</td>
+                  </tr>
+                  <tr>
+                    <td><strong>科學海報</strong></td>
+                    <td>JPG × 1</td>
+                    <td>用圖像與重點文字總結作品，內容與文字欄位一致</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="info-banner">
+              <span class="info-icon">ℹ️</span>
+              <span>海報必須匯出為 <strong>JPG 格式</strong>，單檔不超過 10 MB。如果你的海報是 PDF 或 PNG，請先轉成 JPG 再上傳。</span>
+            </div>
+          </section>
+
+          <!-- 怎樣寫得好 -->
+          <section class="card">
+            <h2>三步寫出清楚的作品介紹</h2>
+            <div class="steps">
+              <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                  <strong>先定問題</strong>
+                  <p>挑一個你們真的看得到的真實問題，不要只寫大口號。清楚說明問題出現在哪裡、影響哪些人，以及為何值得解決。</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                  <strong>再定核心想法</strong>
+                  <p>用一句話說清楚你們方案的主要作用。想清楚這個方法比現有做法好在哪裡，以及為何你們想到這個方向。</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                  <strong>最後補細節</strong>
+                  <p>說明使用流程、材料、技術或執行方式。即使還未做出實物，也要清楚交代可行的做法，說明成本、風險或推行步驟。</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 示例 -->
+          <section class="card">
+            <h2>完整示例</h2>
+            <p style="color:var(--muted); font-size:14px;">以下是一份符合要求的示例，供參考格式與深度。</p>
+            <div class="example">
+              <span class="title-label">示例作品</span>
+              <p><strong>作品名稱：</strong>單車安全監察系統</p>
+              <p><strong>問題說明：</strong>澳門街道狹窄且人車密集，騎單車轉彎時缺乏明確提示，容易引發危險。如果想推動更多人以單車代步，就必須先改善騎行安全，特別是轉向提示不足的問題。</p>
+              <p><strong>設計理念：</strong>希望以智能頭盔提升騎士安全，減少騎行時的分心操作，讓綠色出行更安全、更容易被接受。方案核心是自動感應頭部動作，免去手動操控的需要。</p>
+              <p><strong>解決方案細節：</strong>頭盔內置感應器、陀螺儀與 LED 顯示模組。騎士向左或向右輕微傾頭，頭盔自動亮起對應方向的 LED 燈號約 10 秒，並同步發出提示音，讓後方車輛清楚判斷意圖。模組採用輕量電池，預計續航 8 小時。</p>
+              <p><strong>AI 使用情況：</strong>使用 ChatGPT 協助整理設計理念初稿，並用 Canva AI 輔助海報排版。文字內容最終由組員修訂定稿。</p>
+            </div>
+          </section>
+
+        </div><!-- end left -->
+
+        <!-- ── Right sidebar ── -->
+        <div class="mini-stack">
+
+          <!-- 評分重點 -->
+          <div class="sidebar-card">
+            <h2>評分重點</h2>
+            <ul class="score-list">
+              <li class="score-item">
+                <span class="score-dot"></span>
+                <span>問題是否清楚而重要</span>
+              </li>
+              <li class="score-item">
+                <span class="score-dot"></span>
+                <span>方案是否有創意與原創性</span>
+              </li>
+              <li class="score-item">
+                <span class="score-dot"></span>
+                <span>是否具備可行性與實施細節</span>
+              </li>
+              <li class="score-item">
+                <span class="score-dot"></span>
+                <span>文字與海報是否清楚傳達</span>
+              </li>
+              <li class="score-item">
+                <span class="score-dot"></span>
+                <span>AI 使用是否合理透明</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 提交前 checklist -->
+          <div class="sidebar-card">
+            <h2>提交前檢查</h2>
+            <ul class="checklist">
+              <li>作品名稱已填寫</li>
+              <li>問題說明未超出 200 字</li>
+              <li>設計理念未超出 500 字</li>
+              <li>解決方案細節未超出 1000 字</li>
+              <li>AI 使用情況已如實填寫</li>
+              <li>科學海報已轉為 JPG 格式</li>
+              <li>海報內容與文字欄位一致</li>
+            </ul>
+          </div>
+
+          <!-- 常見問題 -->
+          <div class="sidebar-card">
+            <h2>常見問題</h2>
+            <ul class="checklist">
+              <li>作品未完成也可提交概念和做法</li>
+              <li>沒使用 AI 直接寫「本作品未有使用 AI 工具」</li>
+              <li>海報不是 JPG 請先轉換格式再上傳</li>
+              <li>遇技術問題請立即通知老師</li>
+            </ul>
+          </div>
+
+          <!-- 參考下載 -->
+          <div class="sidebar-card">
+            <h2>參考下載</h2>
+            <div class="btn-row">
+              <a class="btn" href="../參考資料/中學生創意設計挑戰賽.docx">📄 下載比賽章程</a>
+              <a class="btn alt" href="../參考資料/作品介紹文檔.docx">📝 下載作品介紹模板</a>
+              <a class="btn" href="../參考資料/作品介紹文檔(範本).docx">✅ 下載填寫示例</a>
+            </div>
+          </div>
+
+        </div><!-- end sidebar -->
+      </div><!-- end grid -->
+
+    </div><!-- end page -->
+  </body>
+</html>

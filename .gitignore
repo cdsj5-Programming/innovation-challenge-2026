@@ -1,0 +1,42 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor
+.vscode/
+.idea/
+.obsidian/
+*.swp
+*.swo
+
+# Node (if any tooling added)
+node_modules/
+npm-debug.log*
+
+# Python (if Codex work added)
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.env.local
+.env.*.local
+.venv/
+venv/
+
+# Credentials (never commit)
+*.json.bak
+service-account*.json
+credentials*.json
+token*.json
+
+# Temp
+*.tmp
+*.log
+~$*

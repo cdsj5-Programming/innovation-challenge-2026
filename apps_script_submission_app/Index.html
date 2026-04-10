@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一屆聖五中學生創意設計挑戰賽 · 線上提交</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg: #050816;
+        --bg-2: #0b1630;
+        --ink: #ecf4ff;
+        --muted: rgba(218, 230, 255, 0.72);
+        --line: rgba(151, 185, 255, 0.18);
+        --line-strong: rgba(151, 185, 255, 0.3);
+        --card: rgba(11, 21, 44, 0.48);
+        --input: rgba(8, 18, 38, 0.46);
+        --brand: #9fd0ff;
+        --accent: #79c0ff;
+        --accent-2: #2d6dff;
+        --shadow: 0 24px 64px rgba(0, 0, 0, 0.42);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background:
+          radial-gradient(circle at 20% 18%, rgba(65, 105, 225, 0.18), transparent 30%),
+          radial-gradient(circle at 82% 12%, rgba(72, 198, 255, 0.18), transparent 26%),
+          linear-gradient(180deg, #02040b 0%, var(--bg) 38%, var(--bg-2) 100%);
+      }
+
+      body {
+        margin: 0;
+        font-family: "Noto Sans TC", sans-serif;
+        background: transparent;
+        color: var(--ink);
+        min-height: 100vh;
+        position: relative;
+      }
+
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 16px 72px;
+        position: relative;
+        z-index: 2;
+      }
+
+      #p5-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 1;
+        overflow: hidden;
+      }
+
+      #p5-bg canvas {
+        display: block;
+        opacity: 1;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 50% 24%, rgba(124, 193, 255, 0.16), transparent 28%),
+          linear-gradient(180deg, rgba(3, 8, 20, 0.28), rgba(3, 8, 20, 0.74) 62%, rgba(5, 10, 25, 0.94) 100%);
+      }
+
+      .topbar {
+        min-height: 420px;
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 40px;
+      }
+
+      .topbar-inner {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 84px 16px 24px;
+        position: relative;
+        z-index: 3;
+      }
+
+      .brand-block {
+        max-width: 780px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .brand-kicker {
+        display: inline-block;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(121, 192, 255, 0.12);
+        border: 1px solid rgba(121, 192, 255, 0.24);
+        color: rgba(236, 244, 255, 0.86);
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .brand-title {
+        margin: 18px 0 10px;
+        font-size: clamp(38px, 8vw, 84px);
+        line-height: 1.04;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-shadow: 0 0 24px rgba(133, 198, 255, 0.18);
+      }
+
+      .brand-caption {
+        margin: 0 auto;
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 15px;
+        letter-spacing: 0.03em;
+        line-height: 1.7;
+      }
+
+      .hero-orb {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 999px;
+        filter: blur(70px);
+        opacity: 0.34;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      .hero-orb.left {
+        top: 48px;
+        left: 8%;
+        background: rgba(97, 187, 255, 0.8);
+      }
+
+      .hero-orb.right {
+        top: 112px;
+        right: 10%;
+        background: rgba(36, 94, 255, 0.72);
+      }
+
+      .hero-card {
+        margin-top: -108px;
+        margin-bottom: 22px;
+        background: linear-gradient(135deg, rgba(14, 27, 58, 0.72), rgba(9, 18, 42, 0.44));
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 26px 26px 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .hero-grid,
+      .grid,
+      .grid-3,
+      .mini-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-3,
+      .mini-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .meta-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .meta-pill {
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(135, 191, 255, 0.1);
+        border: 1px solid rgba(135, 191, 255, 0.18);
+        font-size: 12px;
+        color: rgba(231, 242, 255, 0.88);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .mini-card,
+      .notice-card,
+      .card {
+        background: linear-gradient(180deg, rgba(13, 24, 50, 0.72), rgba(8, 16, 36, 0.56));
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .mini-card {
+        padding: 14px;
+        border-radius: 18px;
+        background: rgba(121, 180, 255, 0.08);
+      }
+
+      .mini-card strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .notice-card {
+        margin-bottom: 16px;
+        background: linear-gradient(180deg, rgba(28, 46, 85, 0.68), rgba(10, 20, 43, 0.54));
+      }
+
+      .card {
+        margin-bottom: 16px;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
+      .section-badge {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #f2f7ff;
+        background: linear-gradient(135deg, rgba(97, 167, 255, 0.96), rgba(30, 82, 245, 0.92));
+        box-shadow: 0 0 18px rgba(89, 153, 255, 0.22);
+        font-weight: 800;
+      }
+
+      h1,
+      h2 {
+        margin: 0 0 12px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      p,
+      li {
+        line-height: 1.6;
+        color: rgba(229, 238, 255, 0.84);
+      }
+
+      .hint {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .checklist {
+        margin: 10px 0 0;
+        padding-left: 18px;
+      }
+
+      label {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 6px;
+        color: rgba(239, 246, 255, 0.92);
+      }
+
+      input,
+      select,
+      textarea,
+      button {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 12px;
+        font: inherit;
+        background: var(--input);
+        color: var(--ink);
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: rgba(210, 224, 255, 0.46);
+      }
+
+      textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+
+      select option {
+        color: #0b1220;
+      }
+
+      button {
+        background: linear-gradient(135deg, rgba(105, 181, 255, 0.96), rgba(43, 103, 255, 0.92));
+        color: #f5fbff;
+        border: 0;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 14px 30px rgba(25, 84, 228, 0.32);
+      }
+
+      button[disabled] {
+        opacity: 0.6;
+        cursor: wait;
+      }
+
+      .field-meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 6px;
+        font-size: 12px;
+        color: rgba(210, 224, 255, 0.58);
+      }
+
+      .status {
+        margin-top: 12px;
+        white-space: pre-line;
+        line-height: 1.7;
+      }
+
+      .footer-note {
+        padding: 18px 20px 28px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .card:hover,
+      .hero-card:hover,
+      .notice-card:hover {
+        border-color: var(--line-strong);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #p5-bg {
+          display: none;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .grid,
+        .grid-3,
+        .hero-grid,
+        .mini-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar-inner {
+          padding-top: 72px;
+        }
+
+        .topbar {
+          min-height: 360px;
+        }
+
+        .hero-card {
+          margin-top: -84px;
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div id="p5-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-orb left"></div>
+      <div class="hero-orb right"></div>
+      <div class="topbar-inner">
+        <div class="brand-block">
+          <span class="brand-kicker">CDSJ5 · 線上提交系統</span>
+          <h1 class="brand-title" id="title">創意設計挑戰賽提交</h1>
+          <p class="brand-caption">請在比賽時間內填寫作品介紹的四個文字欄位，並上傳 1 份 JPG 科學海報。提交後系統會自動生成 PDF 並存入 Google Drive，提交後 90 分鐘內可更新。</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="meta-strip">
+              <span class="meta-pill">同班分組</span>
+              <span class="meta-pill">2 至 3 人</span>
+              <span class="meta-pill">科學海報 JPG</span>
+            </div>
+          </div>
+          <div class="mini-grid">
+            <div class="mini-card">
+              <strong>四個文字欄位</strong>
+              問題、理念、細節、AI 使用情況
+            </div>
+            <div class="mini-card">
+              <strong>修改時限</strong>
+              提交後 90 分鐘內可更新
+            </div>
+            <div class="mini-card">
+              <strong>科學海報</strong>
+              只收 JPG，上限 10 MB
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notice-card">
+        <p class="hint" id="limits">載入中...</p>
+        <ul class="checklist">
+          <li>問題說明：清楚指出你們觀察到的真實問題、影響誰、為何重要。</li>
+          <li>設計理念：說明為何想到這個方向，以及與現有做法有何不同。</li>
+          <li>解決方案細節：說清楚作品如何運作、使用流程、材料或技術。</li>
+          <li>AI 使用情況：如實填寫，未有使用可直接寫「本作品未有使用 AI 工具」。</li>
+        </ul>
+      </div>
+
+      <form id="submissionForm">
+        <div class="card">
+          <div class="section-title">
+            <span class="section-badge">1</span>
+            <h2>組別資料</h2>
+          </div>
+          <div class="grid">
+            <div>
+              <label for="className">班級</label>
+              <select id="className" name="className" required>
+                <option value="">請先選擇班級</option>
+              </select>
+            </div>
+            <div>
+              <label for="memberCount">組員人數</label>
+              <select id="memberCount" name="memberCount" required>
+                <option value="2">2 人</option>
+                <option value="3">3 人</option>
+              </select>
+            </div>
+          </div>
+          <p class="hint">⚠️ 分組必須為同班同學，不同班不可同組。資料夾名稱由系統自動生成。</p>
+          <div class="grid-3">
+            <div>
+              <label for="member1">組員 1</label>
+              <select id="member1" name="member1" required disabled>
+                <option value="">請先選擇班級</option>
+              </select>
+            </div>
+            <div>
+              <label for="member2">組員 2</label>
+              <select id="member2" name="member2" required disabled>
+                <option value="">請先選擇班級</option>
+              </select>
+            </div>
+            <div>
+              <label for="member3">組員 3</label>
+              <select id="member3" name="member3" disabled>
+                <option value="">如為 2 人組可留空</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">
+            <span class="section-badge">2</span>
+            <h2>作品內容</h2>
+          </div>
+          <div>
+            <label for="projectTitle">作品名稱</label>
+            <input id="projectTitle" name="projectTitle" required placeholder="例如：單車安全監察系統">
+          </div>
+          <div>
+            <label for="problemStatement">問題說明</label>
+            <textarea id="problemStatement" name="problemStatement" required placeholder="請說明你們想解決甚麼真實問題。"></textarea>
+            <div class="field-meta">
+              <span>建議聚焦問題本身，寫清楚影響對象與重要性。</span>
+              <span id="problemStatementCount">0 / 200</span>
+            </div>
+          </div>
+          <div>
+            <label for="designConcept">設計理念</label>
+            <textarea id="designConcept" name="designConcept" required placeholder="請說明你們的核心構想、設計方向與價值。"></textarea>
+            <div class="field-meta">
+              <span>可說明為何想到這個方向，以及與現有做法有何不同。</span>
+              <span id="designConceptCount">0 / 500</span>
+            </div>
+          </div>
+          <div>
+            <label for="solutionDetails">解決方案細節</label>
+            <textarea id="solutionDetails" name="solutionDetails" required placeholder="請詳細說明作品如何運作、怎樣使用、是否可行。"></textarea>
+            <div class="field-meta">
+              <span>可寫功能、流程、材料、技術、成本或推行步驟。</span>
+              <span id="solutionDetailsCount">0 / 1000</span>
+            </div>
+          </div>
+          <div>
+            <label for="aiUsage">人工智能使用情況</label>
+            <textarea id="aiUsage" name="aiUsage" required placeholder="請如實說明本次設計有否使用 AI，以及使用了甚麼平台和用途。"></textarea>
+            <div class="field-meta">
+              <span>如未有使用，可直接寫「本作品未有使用 AI 工具」。</span>
+              <span id="aiUsageCount">0 / 500</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">
+            <span class="section-badge">3</span>
+            <h2>科學海報</h2>
+          </div>
+          <p class="hint">請上傳 <strong>1 份 JPG 格式</strong>海報（上限 10 MB），用圖像與重點文字總結作品名稱、問題、設計理念、解決方案與預期價值。如海報為 PDF 或 PNG，請先自行轉換格式再上傳。</p>
+          <div>
+            <label for="sciencePoster">科學海報 JPG</label>
+            <input id="sciencePoster" name="sciencePoster" type="file" accept=".jpg,.jpeg,image/jpeg" required>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">
+            <span class="section-badge">4</span>
+            <h2>送出提交</h2>
+          </div>
+          <button type="submit" id="submitBtn">確認並提交作品</button>
+          <div class="status" id="status"></div>
+        </div>
+      </form>
+
+      <div class="footer-note">
+        提交成功後，系統會自動生成作品介紹 PDF，並把文字內容與科學海報存入該組專屬的 Google Drive 資料夾。遇到技術問題請立即通知老師。
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+    <script>
+      const form = document.getElementById('submissionForm');
+      const className = document.getElementById('className');
+      const memberCount = document.getElementById('memberCount');
+      const member1 = document.getElementById('member1');
+      const member2 = document.getElementById('member2');
+      const member3 = document.getElementById('member3');
+      const statusBox = document.getElementById('status');
+      const submitBtn = document.getElementById('submitBtn');
+      const memberSelects = [member1, member2, member3];
+      const counterConfigs = [
+        { id: 'problemStatement', counterId: 'problemStatementCount' },
+        { id: 'designConcept', counterId: 'designConceptCount' },
+        { id: 'solutionDetails', counterId: 'solutionDetailsCount' },
+        { id: 'aiUsage', counterId: 'aiUsageCount' },
+      ];
+      let studentsByClass = {};
+      let textLimits = {
+        problemStatement: 200,
+        designConcept: 500,
+        solutionDetails: 1000,
+        aiUsage: 500,
+      };
+
+      function syncThirdMemberFields() {
+        const isThree = memberCount.value === '3';
+        member3.required = isThree;
+        member3.disabled = !isThree || !className.value;
+        if (!isThree) {
+          member3.value = '';
+        }
+      }
+
+      function setStatus(message, isError) {
+        statusBox.textContent = message;
+        statusBox.style.color = isError ? '#ff9a9a' : '#b8dbff';
+      }
+
+      function buildOption(label, value) {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = label;
+        return option;
+      }
+
+      function fillClassOptions(classes) {
+        className.innerHTML = '';
+        className.appendChild(buildOption('請先選擇班級', ''));
+        classes.forEach(item => {
+          className.appendChild(buildOption(item, item));
+        });
+      }
+
+      function refreshMemberOptions() {
+        const selectedClass = className.value;
+        const students = studentsByClass[selectedClass] || [];
+        const currentValues = memberSelects.map(select => select.value);
+
+        memberSelects.forEach((select, index) => {
+          const otherValues = currentValues.filter((value, valueIndex) => value && valueIndex !== index);
+          const placeholder = selectedClass ? '請選擇學生' : '請先選擇班級';
+          const previousValue = select.value;
+
+          select.innerHTML = '';
+          select.appendChild(buildOption(placeholder, ''));
+
+          students.forEach(student => {
+            if (otherValues.includes(student.value) && student.value !== previousValue) {
+              return;
+            }
+            select.appendChild(buildOption(student.label, student.value));
+          });
+
+          select.value = previousValue;
+          if (!select.value) {
+            select.selectedIndex = 0;
+          }
+          if (!selectedClass) {
+            select.disabled = true;
+          } else if (index === 2) {
+            select.disabled = memberCount.value !== '3';
+          } else {
+            select.disabled = false;
+          }
+        });
+      }
+
+      function resetMemberSelections() {
+        memberSelects.forEach(select => {
+          select.value = '';
+        });
+        refreshMemberOptions();
+      }
+
+      function updateCounter(fieldId, counterId) {
+        const field = document.getElementById(fieldId);
+        const counter = document.getElementById(counterId);
+        const max = textLimits[fieldId];
+        if (!field || !counter || !max) {
+          return;
+        }
+        counter.textContent = `${field.value.length} / ${max}`;
+      }
+
+      function applyTextLimits() {
+        counterConfigs.forEach(item => {
+          const field = document.getElementById(item.id);
+          const max = textLimits[item.id];
+          if (!field || !max) {
+            return;
+          }
+          field.maxLength = max;
+          updateCounter(item.id, item.counterId);
+          field.addEventListener('input', () => updateCounter(item.id, item.counterId));
+        });
+      }
+
+      memberCount.addEventListener('change', syncThirdMemberFields);
+      memberCount.addEventListener('change', refreshMemberOptions);
+      className.addEventListener('change', () => {
+        resetMemberSelections();
+        syncThirdMemberFields();
+      });
+      memberSelects.forEach(select => {
+        select.addEventListener('change', refreshMemberOptions);
+      });
+
+      google.script.run.withSuccessHandler(config => {
+        studentsByClass = config.studentsByClass || {};
+        textLimits = config.textLimits || textLimits;
+        document.getElementById('title').textContent = config.eventTitle + ' 提交';
+        document.getElementById('limits').textContent =
+          `${config.eventScheduleLabel}。問題說明 ${textLimits.problemStatement} 字內、設計理念 ${textLimits.designConcept} 字內、解決方案細節 ${textLimits.solutionDetails} 字內、AI 使用情況 ${textLimits.aiUsage} 字內；科學海報 JPG 單檔上限 ${config.posterMaxFileSizeMb} MB；提交後 ${config.resubmissionWindowMinutes} 分鐘內可更新。`;
+        fillClassOptions(config.classes || []);
+        refreshMemberOptions();
+        syncThirdMemberFields();
+        applyTextLimits();
+      }).getAppBootstrapData();
+
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        submitBtn.disabled = true;
+        setStatus('提交中，請稍候...', false);
+
+        google.script.run
+          .withSuccessHandler(result => {
+            submitBtn.disabled = false;
+            setStatus(
+              `${result.message}\nPDF：${result.generatedPdfUrl}\n海報：${result.sciencePosterUrl}\n組別資料夾：${result.groupFolderUrl}`,
+              false
+            );
+            form.reset();
+            refreshMemberOptions();
+            syncThirdMemberFields();
+            counterConfigs.forEach(item => updateCounter(item.id, item.counterId));
+          })
+          .withFailureHandler(error => {
+            submitBtn.disabled = false;
+            setStatus(error.message || '提交失敗，請稍後再試。', true);
+          })
+          .submitSubmission(form);
+      });
+
+      if (window.p5) {
+        new p5((p) => {
+          const cells = [];
+          const dust = [];
+          const maxCells = 10;
+          const maxDust = 110;
+          let host;
+          let pointerX = -9999;
+          let pointerY = -9999;
+          let pointerActive = false;
+
+          function getHostSize() {
+            return {
+              width: host ? host.offsetWidth : p.windowWidth,
+              height: host ? host.offsetHeight : 420,
+            };
+          }
+
+          function rebuild() {
+            cells.length = 0;
+            dust.length = 0;
+            const { width, height } = getHostSize();
+            for (let i = 0; i < maxCells; i += 1) {
+              cells.push({
+                x: p.random(width),
+                y: p.random(height),
+                r: p.random(120, 240),
+                dx: p.random(-0.18, 0.18),
+                dy: p.random(-0.14, 0.14),
+                wobble: p.random(p.TWO_PI),
+                hue: p.random([0, 1, 2]),
+              });
+            }
+
+            for (let i = 0; i < maxDust; i += 1) {
+              dust.push({
+                x: p.random(width),
+                y: p.random(height),
+                r: p.random(1, 2.8),
+                dx: p.random(-0.22, 0.22),
+                dy: p.random(-0.18, 0.18),
+                pulse: p.random(p.TWO_PI),
+              });
+            }
+          }
+
+          p.setup = () => {
+            host = document.getElementById('p5-bg');
+            const { width, height } = getHostSize();
+            const canvas = p.createCanvas(width, height);
+            canvas.parent(host);
+            p.frameRate(60);
+            rebuild();
+          };
+
+          p.windowResized = () => {
+            const { width, height } = getHostSize();
+            p.resizeCanvas(width, height);
+            rebuild();
+          };
+
+          p.mouseMoved = () => {
+            pointerX = p.mouseX;
+            pointerY = p.mouseY;
+            pointerActive = true;
+          };
+
+          p.touchMoved = () => {
+            pointerX = p.mouseX;
+            pointerY = p.mouseY;
+            pointerActive = true;
+            return true;
+          };
+
+          p.mouseOut = () => {
+            pointerActive = false;
+          };
+
+          p.draw = () => {
+            p.clear();
+            const time = p.frameCount * 0.01;
+
+            p.noStroke();
+            p.drawingContext.save();
+            p.drawingContext.filter = 'blur(46px)';
+            for (const cell of cells) {
+              const wobble = p.sin(time + cell.wobble);
+              cell.x += cell.dx + wobble * 0.1;
+              cell.y += cell.dy + p.cos(time * 0.8 + cell.wobble) * 0.08;
+
+              if (pointerActive) {
+                const distToPointer = p.dist(cell.x, cell.y, pointerX, pointerY);
+                if (distToPointer < 240) {
+                  const force = p.map(distToPointer, 0, 240, 0.34, 0);
+                  const angle = p.atan2(cell.y - pointerY, cell.x - pointerX);
+                  cell.x += p.cos(angle) * force * 2.2;
+                  cell.y += p.sin(angle) * force * 2.2;
+                }
+              }
+
+              if (cell.x < -220) cell.x = p.width + 220;
+              if (cell.x > p.width + 220) cell.x = -220;
+              if (cell.y < -220) cell.y = p.height + 220;
+              if (cell.y > p.height + 220) cell.y = -220;
+
+              if (cell.hue === 0) {
+                p.fill(76, 118, 255, 70);
+              } else if (cell.hue === 1) {
+                p.fill(95, 212, 255, 62);
+              } else {
+                p.fill(158, 194, 255, 56);
+              }
+              p.circle(cell.x, cell.y, cell.r + wobble * 18);
+            }
+            p.drawingContext.restore();
+
+            p.noStroke();
+            for (const mote of dust) {
+              mote.x += mote.dx + p.sin(time + mote.pulse) * 0.05;
+              mote.y += mote.dy + p.cos(time + mote.pulse) * 0.04;
+              mote.pulse += 0.014;
+
+              if (mote.x < -10) mote.x = p.width + 10;
+              if (mote.x > p.width + 10) mote.x = -10;
+              if (mote.y < -10) mote.y = p.height + 10;
+              if (mote.y > p.height + 10) mote.y = -10;
+
+              const size = mote.r * (1.6 + p.sin(mote.pulse) * 0.22);
+              p.fill(170, 214, 255, 88);
+              p.circle(mote.x, mote.y, size);
+            }
+
+            for (let i = 0; i < dust.length; i += 1) {
+              for (let j = i + 1; j < dust.length; j += 1) {
+                const a = dust[i];
+                const b = dust[j];
+                const distance = p.dist(a.x, a.y, b.x, b.y);
+                if (distance < 92) {
+                  p.stroke(108, 171, 255, p.map(distance, 0, 92, 54, 0));
+                  p.strokeWeight(0.8);
+                  p.line(a.x, a.y, b.x, b.y);
+                }
+              }
+            }
+
+            if (pointerActive) {
+              p.noFill();
+              p.stroke(120, 197, 255, 78);
+              p.strokeWeight(1.1);
+              p.circle(pointerX, pointerY, 112 + p.sin(time * 9) * 8);
+              p.stroke(90, 129, 255, 42);
+              p.circle(pointerX, pointerY, 188 + p.cos(time * 6) * 12);
+            }
+          };
+        });
+      }
+    </script>
+  </body>
+</html>
